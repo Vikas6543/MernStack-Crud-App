@@ -1,0 +1,4 @@
+{
+        "mongoURI": "mongodb+srv://crud7778traversymedia:CRUD7778TM@cluster0.kvrmm.mongodb.net/<dbname>?retryWrites=true&w=majority",
+        "jwtSecret": "CRUD112145262"
+}
