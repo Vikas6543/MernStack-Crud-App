@@ -23,47 +23,30 @@ const Navbar = ({ title, icon }) => {
 
   const authLinks = (
     <Fragment>
-      <li>Hello {user && user.name}</li>
+      <li style={{ color: 'white' }}>Hello {user && user.name}</li>
       <li>
         <a onClick={onLogout} href='#!'>
-          <i className='fas fa-sign-out-alt' />{' '}
-          <span className='hide-sm'>Logout</span>
+          <button className='logout-btn'>Logout</button>
         </a>
       </li>
     </Fragment>
   );
 
-  const guestLinks = (
-    <Fragment>
-      <li>
-        <Link to='/register'>Register</Link>
-      </li>
-      <li>
-        <Link to='/login'>Login</Link>
-      </li>
-    </Fragment>
-  );
-
   return (
-    <div className='navbar bg-primary'>
-      <h1>
+    <div className='navbar'>
+      <h3>
         <Link to='/'>
-          <i className={icon} /> {title}
+          <i className='fab fa-react' /> Mernstack Crud App
         </Link>
-      </h1>
-      <ul>{isAuthenticated ? authLinks : guestLinks}</ul>
+      </h3>
+      <ul>{isAuthenticated && authLinks}</ul>
     </div>
   );
 };
 
 Navbar.propTypes = {
   title: PropTypes.string.isRequired,
-  icon: PropTypes.string
-};
-
-Navbar.defaultProps = {
-  title: 'Contact Keeper',
-  icon: 'fas fa-id-card-alt'
+  icon: PropTypes.string,
 };
 
 export default Navbar;

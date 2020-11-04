@@ -1,8 +1,9 @@
 import React, { useState, useContext, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import AlertContext from '../../context/alert/alertContext';
 import AuthContext from '../../context/auth/authContext';
 
-const Register = props => {
+const Register = (props) => {
   const alertContext = useContext(AlertContext);
   const authContext = useContext(AuthContext);
 
@@ -25,14 +26,14 @@ const Register = props => {
     name: '',
     email: '',
     password: '',
-    password2: ''
+    password2: '',
   });
 
   const { name, email, password, password2 } = user;
 
-  const onChange = e => setUser({ ...user, [e.target.name]: e.target.value });
+  const onChange = (e) => setUser({ ...user, [e.target.name]: e.target.value });
 
-  const onSubmit = e => {
+  const onSubmit = (e) => {
     e.preventDefault();
     if (name === '' || email === '' || password === '') {
       setAlert('Please enter all fields', 'danger');
@@ -42,7 +43,7 @@ const Register = props => {
       register({
         name,
         email,
-        password
+        password,
       });
     }
   };
@@ -50,7 +51,7 @@ const Register = props => {
   return (
     <div className='form-container'>
       <h1>
-        Account <span className='text-primary'>Register</span>
+        <span style={{ color: 'tomato' }}>R</span>egister
       </h1>
       <form onSubmit={onSubmit}>
         <div className='form-group'>
@@ -65,7 +66,7 @@ const Register = props => {
           />
         </div>
         <div className='form-group'>
-          <label htmlFor='email'>Email Address</label>
+          <label htmlFor='email'>Email :</label>
           <input
             id='email'
             type='email'
@@ -76,7 +77,7 @@ const Register = props => {
           />
         </div>
         <div className='form-group'>
-          <label htmlFor='password'>Password</label>
+          <label htmlFor='password'>Password :</label>
           <input
             id='password'
             type='password'
@@ -88,7 +89,7 @@ const Register = props => {
           />
         </div>
         <div className='form-group'>
-          <label htmlFor='password2'>Confirm Password</label>
+          <label htmlFor='password2'>Confirm Password :</label>
           <input
             id='password2'
             type='password'
@@ -102,9 +103,14 @@ const Register = props => {
         <input
           type='submit'
           value='Register'
-          className='btn btn-primary btn-block'
+          className='btn submit-btn btn-block'
         />
       </form>
+      <div className='text-center'>
+        <h4>
+          <Link to='/login'>Already have an account ?</Link>
+        </h4>
+      </div>
     </div>
   );
 };
